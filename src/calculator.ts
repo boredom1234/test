@@ -1,28 +1,28 @@
 export class Calculator {
     constructor() {}
   
-    add(a,b) {
-      return a+b
+    calculateSum(a: number, b: number): number {
+      return a + b
     }
   
-    subtract(a,b) {
-      return a-b
+    calculateDifference(a: number, b: number): number {
+      return a - b
     }
   
-    multiply(a,b) {
-      var result = a*b;
+    calculateProduct(a: number, b: number): number {
+      return a * b
+    }
+  
+    calculateQuotient(a: number, b: number): number | null {
+      if (b === 0) return null
+      return a / b
+    }
+  
+    calculatePower(a: number, b: number): number {
+      let result = 1
+      for (let i = 0; i < b; i++) {
+        result = result * a
+      }
       return result
     }
-  
-    divide(a,b) {
-      if(b==0) return null
-      return a/b
-    }
-  
-    power(a,b) {
-      let result=1
-      for(let i=0;i<b;i++)
-      result=result*a
-      return result
-    }
-  }
+}
