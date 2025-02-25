@@ -25,5 +25,5 @@ jobs:
 
           # Quality metrics options
           enable_quality_metrics: 'true'
-          quality_tools: 'auto'  # or specify: 'eslint,pylint'
+          quality_tools: 'eslint,pylint'  # or specify: 'eslint,pylint'
           fail_on_quality_issues: 'true'
