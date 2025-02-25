@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for quality tools
+          
       - name: PR Review Bot
         uses: boredom1234/pr-review-bot-together@master
         with:
@@ -19,3 +22,8 @@ jobs:
           TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
           TOGETHER_API_MODEL: 'meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo'
           exclude: '*.md,*.txt'  # optional: files to exclude
+
+          # Quality metrics options
+          enable_quality_metrics: 'true'
+          quality_tools: 'auto'  # or specify: 'eslint,pylint'
+          fail_on_quality_issues: 'true'
