@@ -1,14 +1,16 @@
 import logging
 
-# Set up logging configuration
-logging.basicConfig(level=logging.ERROR)
+GRAVITY = 9.81
 
-def kinetic_energy(mass, speed):
-    if mass < 0 or speed < 0:
-        raise ValueError("Mass and speed must be non-negative.")
-    return 0.5 * mass * speed ** 2
+def setup_logging():
+    logging.basicConfig(level=logging.ERROR)
 
-def potential_energy(mass, height, gravity=9.81):
+def kinetic_energy(mass, velocity):
+    if mass < 0 or velocity < 0:
+        raise ValueError("Mass and velocity must be non-negative.")
+    return 0.5 * mass * velocity ** 2
+
+def potential_energy(mass, height, gravity=GRAVITY):
     if mass < 0 or height < 0 or gravity <= 0:
         raise ValueError("Mass, height, and gravity must be non-negative.")
     return mass * gravity * height
@@ -23,10 +25,10 @@ def work_done(applied_force, distance):
         raise ValueError("Applied force and distance must be non-negative.")
     return applied_force * distance
 
-def momentum(mass, speed):
-    if mass < 0 or speed < 0:
-        raise ValueError("Mass and speed must be non-negative.")
-    return mass * speed
+def momentum(mass, velocity):
+    if mass < 0 or velocity < 0:
+        raise ValueError("Mass and velocity must be non-negative.")
+    return mass * velocity
 
 def frequency(wavelength, speed):
     if wavelength <= 0 or speed < 0:
@@ -35,23 +37,26 @@ def frequency(wavelength, speed):
 
 def main():
     test_cases = [
-        (10, 5),  # mass, speed for kinetic energy
-        (10, 5),  # mass, height for potential energy
-        (10, 2),  # mass, acceleration for force
-        (10, 5),  # applied force, distance for work done
-        (10, 5),  # mass, speed for momentum
-        (2, 10)   # wavelength, speed for frequency
+        {"mass": 10, "velocity": 5},  # Kinetic Energy
+        {"mass": 10, "height": 5},     # Potential Energy
+        {"mass": 10, "acceleration": 2},  # Force
+        {"applied_force": 10, "distance": 5},  # Work Done
+        {"mass": 10, "velocity": 5},   # Momentum
+        {"wavelength": 2, "speed": 10}  # Frequency
     ]
 
     try:
-        print("Kinetic Energy (mass=10, speed=5):", kinetic_energy(*test_cases[0]))
-        print("Potential Energy (mass=10, height=5):", potential_energy(*test_cases[1], gravity=9.81))
-        print("Force (mass=10, acceleration=2):", force(*test_cases[2]))
-        print("Work Done (applied force=10, distance=5):", work_done(*test_cases[3]))
-        print("Momentum (mass=10, speed=5):", momentum(*test_cases[4]))
-        print("Frequency (wavelength=2, speed=10):", frequency(*test_cases[5]))
+        print("Kinetic Energy (mass=10, velocity=5):", kinetic_energy(test_cases[0]["mass"], test_cases[0]["velocity"]))
+        print("Potential Energy (mass=10, height=5):", potential_energy(test_cases[1]["mass"], test_cases[1]["height"]))
+        print("Force (mass=10, acceleration=2):", force(test_cases[2]["mass"], test_cases[2]["acceleration"]))
+        print("Work Done (applied force=10, distance=5):", work_done(test_cases[3]["applied_force"], test_cases[3]["distance"]))
+        print("Momentum (mass=10, velocity=5):", momentum(test_cases[4]["mass"], test_cases[4]["velocity"]))
+        print("Frequency (wavelength=2, speed=10):", frequency(test_cases[5]["wavelength"], test_cases[5]["speed"]))
     except ValueError as e:
-        logging.error("Error: %s", e)
+        logging.error("ValueError: %s", e)
+    except Exception as e:
+        logging.error("An unexpected error occurred: %s", e)
 
 if __name__ == "__main__":
+    setup_logging()
     main()
