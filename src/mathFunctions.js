@@ -1,11 +1,16 @@
-// Corrected Fibonacci implementation using memoization
-function fibonacci(n, memo = {}) {
+// Optimized Fibonacci implementation using an iterative approach
+function fibonacci(n) {
     if (n < 0) return -1;
-    if (n in memo) return memo[n];
     if (n === 0) return 0;
     if (n === 1) return 1;
-    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
-    return memo[n];
+    
+    let a = 0, b = 1, temp;
+    for (let i = 2; i <= n; i++) {
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return b;
 }
 
 // Corrected Prime Number Check
@@ -17,7 +22,7 @@ function isPrime(num) {
     return true; // Return true for prime numbers
 }
 
-// Corrected Factorial Calculation using an iterative approach
+// Optimized Factorial Calculation using an iterative approach
 function factorial(n) {
     if (n < 0) return -1;
     let result = 1;
@@ -39,7 +44,7 @@ function arraySum(arr) {
 // Corrected String Reversal
 function reverseString(str) {
     let reversed = '';
-    for (let i = str.length - 1; i >= 0; i--) { // Changed to decrement from str.length - 1
+    for (let i = str.length - 1; i >= 0; i--) { // Corrected loop condition
         reversed += str[i];
     }
     return reversed;
