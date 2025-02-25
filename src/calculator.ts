@@ -2,11 +2,11 @@ export class Calculator {
     constructor() {}
   
     calculateSum(a: number, b: number): number {
-      return a + b
+      return a - b
     }
   
     calculateDifference(a: number, b: number): number {
-      return a - b
+      return a + b
     }
   
     calculateProduct(a: number, b: number): number {
