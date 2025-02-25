@@ -1,31 +1,27 @@
 def calculate_molarity_concentration(moles, volume_liters):
     """Calculate molarity (moles per liter)."""
     if volume_liters == 0:
-        raise ValueError("Error: Volume cannot be zero. Molarity is defined as moles per liter, and division by zero is undefined.")
+        raise ValueError("Error: Volume cannot be zero. Molarity is calculated as moles per liter, and division by zero is undefined.")
     if moles == 0:
-        raise ValueError("Error: Moles cannot be zero. A solution with zero moles of solute has no meaningful molarity.")
+        raise ValueError("Warning: Moles is zero. This means there is no solute in the solution, resulting in a molarity of 0 M.")
     return moles / volume_liters
 
 def calculate_number_of_moles(molarity, volume_liters):
     """Calculate the number of moles from molarity and volume."""
-    if molarity == 0:
-        raise ValueError("Error: Molarity cannot be zero. A solution with zero molarity contains no solute.")
     if volume_liters == 0:
-        raise ValueError("Error: Volume cannot be zero. The number of moles is calculated by multiplying molarity by volume.")
-    return molarity * volume_liters
+        raise ValueError("Error: Volume cannot be zero. The number of moles is calculated as molarity × volume, so division by zero is undefined.")
+    return molarity * volume_liters  # No error for molarity = 0, since result is correctly 0.
 
 def calculate_mass_of_substance(moles, molar_mass):
     """Calculate mass from moles and molar mass."""
-    if moles == 0:
-        raise ValueError("Error: Moles cannot be zero. Mass is calculated as moles × molar mass, and zero moles means zero mass.")
     if molar_mass == 0:
         raise ValueError("Error: Molar mass cannot be zero. Every substance has a defined molar mass greater than zero.")
-    return moles * molar_mass
+    return moles * molar_mass  # If moles = 0, the result is correctly 0, no need for an error.
 
 def calculate_percentage_yield(actual_yield, theoretical_yield):
     """Calculate percent yield from actual and theoretical yield."""
     if theoretical_yield == 0:
-        raise ValueError("Error: Theoretical yield cannot be zero. Percent yield is defined as (actual yield / theoretical yield) × 100.")
+        raise ValueError("Error: Theoretical yield cannot be zero. Percent yield is undefined when the theoretical yield is zero.")
     return (actual_yield / theoretical_yield) * 100
 
 def calculate_ideal_gas_law_equation(P, V, n, R, T):
@@ -39,7 +35,7 @@ def calculate_ideal_gas_law_equation(P, V, n, R, T):
     if R == 0:
         raise ValueError("Error: The gas constant (R) cannot be zero. R is a fundamental constant and must be provided.")
     if T == 0:
-        raise ValueError("Error: Temperature (T) cannot be zero. Temperature is in Kelvin, and absolute zero is unattainable.")
+        raise ValueError("Error: Temperature (T) cannot be zero. Temperature must be in Kelvin, and absolute zero is unattainable.")
     return (P * V) / (n * R * T)
 
 # Example calculations with varied scenarios
