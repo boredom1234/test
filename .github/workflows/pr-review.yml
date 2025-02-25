@@ -17,6 +17,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
-          # TOGETHER_API_MODEL: 'meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo'
-          TOGETHER_API_MODEL: 'codellama/CodeLlama-34b-Instruct-hf'
+          TOGETHER_API_MODEL: 'meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo'
           exclude: '*.md,*.txt'  # optional: files to exclude
