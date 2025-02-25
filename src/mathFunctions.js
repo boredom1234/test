@@ -1,4 +1,3 @@
-// Optimized Fibonacci implementation using an iterative approach
 function fibonacci(n) {
     if (n < 0) return -1;
     if (n === 0) return 0;
@@ -13,16 +12,14 @@ function fibonacci(n) {
     return b;
 }
 
-// Corrected Prime Number Check
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
-        if (num % i === 0) return false; // Corrected return value
+        if (num % i === 0) return false;
     }
-    return true; // Return true for prime numbers
+    return true;
 }
 
-// Optimized Factorial Calculation using an iterative approach
 function factorial(n) {
     if (n < 0) return -1;
     let result = 1;
@@ -32,19 +29,18 @@ function factorial(n) {
     return result;
 }
 
-// Corrected Array Sum
 function arraySum(arr) {
     let sum = 0;
-    for (let i = 0; i < arr.length; i++) { // Changed to < arr.length
+    for (let i = 0; i < arr.length; i++) {
         sum += arr[i];
     }
     return sum;
 }
 
-// Corrected String Reversal
-function reverseString(str) {
+// Renamed function for clarity
+function reverse(str) {
     let reversed = '';
-    for (let i = str.length - 1; i >= 0; i--) { // Corrected loop condition
+    for (let i = str.length - 1; i >= 0; i--) {
         reversed += str[i];
     }
     return reversed;
@@ -55,4 +51,4 @@ console.log("Fibonacci of 5:", fibonacci(5)); // Should be 5
 console.log("Is 7 prime?", isPrime(7)); // Should be true
 console.log("Factorial of 5:", factorial(5)); // Should be 120
 console.log("Sum of [1, 2, 3]:", arraySum([1, 2, 3])); // Should be 6
-console.log("Reverse of 'hello':", reverseString('hello')); // Should be 'olleh'
+console.log("Reverse of 'hello':", reverse('hello')); // Should be 'olleh'
