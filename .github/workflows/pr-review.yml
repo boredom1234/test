@@ -86,7 +86,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-          cache: 'pip'
       
       # Set up Go for Golint (only if Go files exist)
       - name: Check for Go project
